@@ -7,6 +7,5 @@ void main(List<String> arguments) {
   String? number2 = stdin.readLineSync();
   int? result1 = int.tryParse(number1!);
   int? result2 = int.tryParse(number2!);
-
-  print(result1! + result2!);
+  print(result1!-result2!);
 }
