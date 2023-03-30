@@ -5,19 +5,39 @@ import 'package:dart_core_cli/dart_core_cli.dart' as dart_core_cli;
 import 'package:test/expect.dart';
 
 void main(List<String> arguments) {
-  print("Введіть текст для перевірки на рівність");
-  String? str = stdin.readLineSync()!;
-  print("Введіть текст для перевірки на рівність");
-  String? str1 = stdin.readLineSync()!;
-  var st1 = str1.codeUnits;
-  var st11 = st1.length;
-  var st = str.codeUnits;
-  var stt = st.length;
-  print(st11);
-  print(stt);
-  if(st11 == stt){
-    print("Рівні");
-  } else {print("не рівні");
+  print(
+      "Яким методом ви хочете це зробити? Якщо простим, натиснгіть 1, якщо складним, натисніть 2");
+  String str = stdin.readLineSync()!;
+  int? st = int.tryParse(str);
+  if (str == null) {
+    print("Не коректно");
+  } else {
+    if (st == 1) {
+      removeSpacesByString();
+    }
+    if (st == 2) {
+      removeSpacesCycle();
+    }
   }
+}
 
+void removeSpacesByString() {
+  print("Введіть текст");
+  String? str = stdin.readLineSync()!;
+  String? st = str.replaceAll(' ', '');
+  print(st);
+}
+
+void removeSpacesCycle() {
+  print("Введіть текст");
+  String? str = stdin.readLineSync()!;
+  List<int> inputData = str.codeUnits;
+  List<int> outputData = [];
+  for (int i = 0; i <= inputData.length - 1; i++) {
+    if (inputData[i] != 32) {
+      outputData.add(inputData[i]);
+    }
+  }
+  String output = String.fromCharCodes(outputData);
+  print(output);
 }
