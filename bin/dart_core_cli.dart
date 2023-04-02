@@ -7,7 +7,7 @@ import 'package:test/expect.dart';
 void main(List<String> arguments) {
   int result = 1;
 
-    print("Генерація пароля");
+    print("введіть число, аби дізнатись його факторіал");
     String? numbers = stdin.readLineSync()!;
     int number = int.tryParse(numbers)!;
 
