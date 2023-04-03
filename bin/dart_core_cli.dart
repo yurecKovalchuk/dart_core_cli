@@ -3,29 +3,28 @@ import 'dart:io';
 import 'package:dart_core_cli/dart_core_cli.dart' as dart_core_cli;
 
 void main(List<String> arguments) {
-  print("Введіть цифру");
-  try {
-    final number = _inputNumber();
-    final result = _functionFor(number);
-    print(result);
-  } catch (e) {
-    print("Не вірне введення: $e");
-  }
+    String onConsole = _functionCheck();
+    print(onConsole);
 }
 
-int _inputNumber() {
-  String input = stdin.readLineSync()!;
-  return int.parse(input);
-}
+String _functionCheck() {
+  print("Введіть текст для перевірки");
+  String? inputText1 = stdin.readLineSync()!;
+  var codeUnText1 = inputText1.codeUnits;
 
-String _functionFor(int number){
-  if(number == 1) print("Не коректне число");
-  if(number <= 0) print("Не коректне число");
-  for (int i = 2; i <= number; i++){
-    var resultDivision = (number % i);
-    if (resultDivision == 0 && number != i){
-      return "Не просте число";
+  print("Введіть наступний текст для перевірки");
+  String? inputText2 = stdin.readLineSync()!;
+  var codeUnText2 = inputText2.codeUnits;
+
+  for (int i = 0; i <= codeUnText1.length-1; i++) {
+    var result = codeUnText1[i];
+    for (int j = 0; j <= codeUnText2.length-1; j++) {
+      if (result == codeUnText2[j]) {
+        return "Співпало";
+      } else {
+        return "Не співпало";
+      }
     }
   }
-  return "Просте число";
+  return "Не коректно";
 }
