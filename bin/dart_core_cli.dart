@@ -8,16 +8,24 @@ void main(List<String> arguments) {
 }
 
 String _functionCheck() {
-
+  int summ = 0;
+  List<int> numberList = [];
   print("Введіть номер");
   String numbers = stdin.readLineSync()!;
   int number = int.tryParse(numbers)!;
 
-  for(int i = 2; i <= number; i++ ){
+  for(int i = 1; i < number; i++ ){
     int a = (number % i);
     if (a == 0){
-      print (i);
+     numberList.add(i);
     }
   }
-return _functionCheck();
+  for(int i = 0; i <= numberList.length-1; i++){
+    summ += numberList[i];
+    print(summ);
+  }
+  if(summ == number){
+    return "Це число досконале";
+  }
+return "Це число не є досконалим";
 }
