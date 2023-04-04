@@ -3,28 +3,27 @@ import 'dart:io';
 import 'package:dart_core_cli/dart_core_cli.dart' as dart_core_cli;
 
 void main(List<String> arguments) {
-    String onConsole = _functionCheck();
-    print(onConsole);
+  String onConsole = _functionCheck();
+  print(onConsole);
 }
 
 String _functionCheck() {
-  print("Введіть текст для перевірки");
-  String? inputText1 = stdin.readLineSync()!;
-  var codeUnText1 = inputText1.codeUnits;
-
-  print("Введіть наступний текст для перевірки");
-  String? inputText2 = stdin.readLineSync()!;
-  var codeUnText2 = inputText2.codeUnits;
-
-  for (int i = 0; i <= codeUnText1.length-1; i++) {
-    var result = codeUnText1[i];
-    for (int j = 0; j <= codeUnText2.length-1; j++) {
-      if (result == codeUnText2[j]) {
-        return "Співпало";
-      } else {
-        return "Не співпало";
+  String vad = "";
+  print("Введіть текст");
+  String text1 = stdin.readLineSync()!;
+  print("Введіть текст");
+  String text2 = stdin.readLineSync()!;
+  List<String> splitText1 = text1.split(' ').toList();
+  List<String> splitText2 = text2.split(' ').toList();
+  int splLengthText1 = splitText1.length;
+  int splLengthText2 = splitText2.length;
+  for (int i = 0; i <= splLengthText1-1; i++) {
+    var result = splitText1[i];
+    for (int j = 0; j <= splLengthText2-1; j++) {
+      if (result == splitText2[j] && result.length >= vad.length) {
+        vad = result;
       }
     }
   }
-  return "Не коректно";
+  return vad;
 }
